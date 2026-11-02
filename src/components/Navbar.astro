@@ -1,0 +1,100 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/images/logo.png';
+
+const navLinks = [
+  { href: '#inicio', label: 'Inicio' },
+  { href: '#quienes-somos', label: 'Identidad' },
+  { href: '#pilares', label: 'Los 3 Pilares' },
+  { href: '#ecosistema', label: 'Profesiones' },
+  { href: '#impacto', label: 'Impacto' },
+  { href: '#preguntas', label: 'Preguntas' },
+];
+---
+
+<header class="minimal-header">
+  <nav class="container minimal-nav" aria-label="Navegación principal">
+    <a href="#inicio" class="minimal-brand" aria-label="PROEMES - Ir al inicio">
+      <figure class="minimal-brand-figure">
+        <Image
+          src={logoImg}
+          alt="Escudo oficial de PROEMES"
+          width={38}
+          height={38}
+          loading="eager"
+          class="minimal-brand-logo"
+        />
+      </figure>
+      <strong class="minimal-brand-name">PROEMES</strong>
+    </a>
+
+    <!-- Navegación de Escritorio -->
+    <ul class="minimal-links">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a href={link.href} class="minimal-link">
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a
+          href="https://www.facebook.com/aproemes"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="minimal-cta"
+          aria-label="Visitar página de Facebook de PROEMES (se abre en una nueva pestaña)"
+        >
+          <span>Comunidad</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+            <path d="M7 17L17 7M7 7h10v10" />
+          </svg>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Menú Móvil Semántico (<details>) 100% Responsivo y Accesible -->
+    <details class="mobile-nav-drawer">
+      <summary class="mobile-nav-toggle" aria-label="Abrir menú de navegación">
+        <span class="toggle-bar"></span>
+        <span class="toggle-bar"></span>
+        <span class="toggle-bar"></span>
+      </summary>
+      <menu class="mobile-nav-panel">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a href={link.href} class="mobile-nav-link">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a
+            href="https://www.facebook.com/aproemes"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="pill-btn pill-btn--light mobile-nav-cta"
+          >
+            Unirse en Facebook ↗
+          </a>
+        </li>
+      </menu>
+    </details>
+  </nav>
+</header>
+
+<script>
+  // Cierra automáticamente el menú móvil al seleccionar un enlace
+  const mobileDrawer = document.querySelector('details.mobile-nav-drawer');
+  if (mobileDrawer) {
+    mobileDrawer.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileDrawer.removeAttribute('open');
+      });
+    });
+  }
+</script>

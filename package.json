@@ -1,0 +1,16 @@
+{
+  "name": "proemes-landing",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Landing page oficial para PROEMES - Asociación de Profesionales, Empresarios y Estudiantes Universitarios",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.1.0"
+  }
+}

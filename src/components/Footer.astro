@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/images/logo.png';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="minimal-footer">
+  <section class="container footer-columns" aria-label="Pie de página institucional">
+    <article class="footer-brand-col">
+      <a href="#inicio" class="footer-wordmark-row">
+        <Image
+          src={logoImg}
+          alt="Escudo oficial de PROEMES"
+          width={42}
+          height={42}
+          loading="lazy"
+        />
+        <span class="footer-serif-brand">Proemes</span>
+      </a>
+      <p class="footer-tagline">
+        Asociación de Profesionales, Empresarios y Estudiantes Universitarios.
+      </p>
+      <small class="footer-motto-text">“MI PROFESIÓN AL SERVICIO DE MI COMUNIDAD”</small>
+    </article>
+
+    <nav class="footer-nav-col" aria-label="Navegación">
+      <h2>Asociación</h2>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#quienes-somos">Quiénes Somos</a></li>
+        <li><a href="#pilares">Los 3 Pilares</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-nav-col" aria-label="Comunidad">
+      <h2>Participación</h2>
+      <ul>
+        <li><a href="#ecosistema">Profesiones</a></li>
+        <li><a href="#impacto">Impacto Social</a></li>
+        <li><a href="#preguntas">Preguntas Frecuentes</a></li>
+      </ul>
+    </nav>
+
+    <address class="footer-nav-col">
+      <h2>Conectar</h2>
+      <ul>
+        <li>
+          <a
+            href="https://www.facebook.com/aproemes"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Facebook (@aproemes) ↗
+          </a>
+        </li>
+        <li><a href="#contacto">Sede y Reuniones</a></li>
+      </ul>
+    </address>
+  </section>
+
+  <aside class="container footer-legal" aria-label="Derechos de autor y firma del desarrollador">
+    <small>© {currentYear} PROEMES. Todos los derechos reservados.</small>
+    <small class="author-signature">
+      Desarrollado por <strong>David Guevara</strong>
+    </small>
+  </aside>
+</footer>

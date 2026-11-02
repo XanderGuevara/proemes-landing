@@ -1,0 +1,160 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/images/logo.png';
+import heroImg from '../assets/images/hero.png';
+
+const faqs = [
+  {
+    question: '¿Qué es PROEMES y cuál es su propósito principal?',
+    answer:
+      '[Texto editable: PROEMES es la Asociación de Profesionales, Empresarios y Estudiantes Universitarios. Nuestro propósito es poner el conocimiento técnico, el liderazgo empresarial y el talento joven al servicio directo de nuestra comunidad.]',
+  },
+  {
+    question: '¿Quiénes pueden integrarse a la asociación?',
+    answer:
+      '[Texto editable: Pueden sumarse profesionales graduados de cualquier especialidad, empresarios o emprendedores, y estudiantes universitarios que compartan nuestros principios de ética y servicio comunitario.]',
+  },
+  {
+    question: '¿Dónde se anuncian las asambleas, congresos y jornadas sociales?',
+    answer:
+      '[Texto editable: Todas nuestras convocatorias oficiales, reuniones generales y actividades comunitarias se publican en nuestra página oficial de Facebook (facebook.com/aproemes).]',
+  },
+  {
+    question: '¿Cómo apoya PROEMES a los estudiantes universitarios?',
+    answer:
+      '[Texto editable: A través de mentoría con profesionales experimentados, vinculación con el sector empresarial, orientación vocacional y participación en brigadas multidisciplinarias.]',
+  },
+];
+---
+
+<section id="preguntas" class="qa-and-showcase" aria-labelledby="qa-title">
+  <!-- SECCIÓN Q&A CENTRADA -->
+  <article class="container qa-container">
+    <header class="qa-header">
+      <h2 id="qa-title" class="editorial-heading">Preguntas y <em>Respuestas</em></h2>
+      <p class="qa-sub">
+        Todo lo que necesitas saber para integrarte y participar en PROEMES.
+      </p>
+    </header>
+
+    <dl class="qa-accordion">
+      {
+        faqs.map((item, idx) => (
+          <details class="qa-pill" open={idx === 0}>
+            <summary class="qa-summary">
+              <span>{item.question}</span>
+            </summary>
+            <p class="qa-body">{item.answer}</p>
+          </details>
+        ))
+      }
+    </dl>
+
+    <footer class="qa-footer">
+      <small>¿Tienes otra consulta?</small>
+      <a
+        href="https://www.facebook.com/aproemes"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Escríbenos en nuestro Fanpage Oficial ↗
+      </a>
+    </footer>
+  </article>
+
+  <!-- TARJETA EDITORIAL DE ACTUALIDAD / COMUNIDAD -->
+  <article class="container community-feature" aria-labelledby="feature-title">
+    <header class="feature-left">
+      <h2 id="feature-title" class="editorial-heading">Comunidad</h2>
+      <p class="editorial-copy">
+        Conoce nuestras asambleas, encuentros intergeneracionales y jornadas al
+        servicio de la sociedad.
+      </p>
+    </header>
+
+    <article class="feature-card">
+      <header class="feature-card__copy">
+        <small class="feature-eyebrow">IDENTIDAD PROEMES</small>
+        <h3 class="feature-card__title">
+          Presentando PROEMES: <em>“Mi profesión al servicio de mi comunidad”</em>
+        </h3>
+        <p class="feature-card__text">
+          [Texto editable: Un recorrido por nuestra historia, el significado de
+          nuestro escudo y la visión que une a profesionales, empresarios y
+          universitarios en cada asamblea.]
+        </p>
+        <a
+          href="https://www.facebook.com/aproemes"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="pill-btn pill-btn--glass"
+        >
+          Ver publicaciones en Facebook ↗
+        </a>
+      </header>
+
+      <figure class="feature-card__media">
+        <Image
+          src={heroImg}
+          alt="Asamblea de miembros de PROEMES"
+          width={520}
+          height={340}
+          loading="lazy"
+          class="feature-photo"
+        />
+      </figure>
+    </article>
+  </article>
+
+  <!-- BLOQUE LUMINOSO FINAL DE CONTACTO -->
+  <section id="contacto" class="luminous-cta-stage" aria-labelledby="cta-window-title">
+    <article class="container luminous-window">
+      <header class="window-topbar">
+        <span class="window-dots" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </span>
+        <small>facebook.com/aproemes — Canal Oficial</small>
+      </header>
+
+      <section class="window-body" aria-label="Invitación a la comunidad">
+        <figure class="window-logo-wrap">
+          <Image
+            src={logoImg}
+            alt="Escudo oficial de PROEMES"
+            width={92}
+            height={92}
+            loading="lazy"
+          />
+        </figure>
+
+        <p class="window-motto">“MI PROFESIÓN AL SERVICIO DE MI COMUNIDAD”</p>
+
+        <h2 id="cta-window-title" class="window-title">
+          Conecta con la Asociación de Profesionales, Empresarios y Estudiantes Universitarios
+        </h2>
+
+        <p class="window-desc">
+          [Texto de marcador de posición: Síguenos en nuestra página oficial de
+          Facebook para enterarte de próximas reuniones, actividades académicas
+          y proyectos comunitarios.]
+        </p>
+
+        <menu class="window-actions">
+          <li>
+            <a
+              href="https://www.facebook.com/aproemes"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="window-btn-primary"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+              </svg>
+              <span>Seguir a @aproemes en Facebook</span>
+            </a>
+          </li>
+        </menu>
+      </section>
+    </article>
+  </section>
+</section>

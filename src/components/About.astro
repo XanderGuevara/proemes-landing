@@ -1,0 +1,233 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/images/logo.png';
+
+const disciplines = [
+  { name: 'Ingeniería y Arquitectura', icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5', tone: 'blue' },
+  { name: 'Ciencias de la Salud', icon: 'M22 12h-4l-3 9L9 3l-3 9H2', tone: 'flame' },
+  { name: 'Derecho y Justicia', icon: 'M12 3v18M5 8l7-5 7 5M5 8v6a7 7 0 0 0 14 0V8', tone: 'gold' },
+  { name: 'Dirección Empresarial', icon: 'M3 21h18M5 21V7l8-4v18M19 21V11l-6-4', tone: 'blue' },
+  { name: 'Educación y Docencia', icon: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z', tone: 'gold' },
+  { name: 'Tecnología y Sistemas', icon: 'M16 18l6-6-6-6M8 6l-6 6 6 6', tone: 'flame' },
+  { name: 'Economía y Finanzas', icon: 'M18 20V10M12 20V4M6 20v-6', tone: 'blue' },
+  { name: 'Liderazgo Universitario', icon: 'M22 10v6M2 10l10-5 10 5-10 5z M6 12v5c3 3 9 3 12 0v-5', tone: 'gold' },
+];
+
+const pillars = [
+  {
+    step: 'PILAR 01',
+    title: 'Profesionales',
+    description:
+      '[Texto editable: Especialistas de diversas ramas que aportan asesoría técnica, ética laboral y brigadas de servicio directo a la comunidad.]',
+  },
+  {
+    step: 'PILAR 02',
+    title: 'Empresarios',
+    description:
+      '[Texto editable: Emprendedores y líderes productivos que impulsan oportunidades laborales, desarrollo económico y apoyo a proyectos sociales.]',
+  },
+  {
+    step: 'PILAR 03',
+    title: 'Universitarios',
+    description:
+      '[Texto editable: Jóvenes en formación académica que integran energía, innovación y compromiso social junto a mentores con experiencia.]',
+  },
+];
+
+const comparisonBars = [
+  {
+    sector: 'Profesionales',
+    metric: 'Asesoría, ética y mentoría directa',
+    proemesHeight: '88%',
+    tag: 'Vocación Activa',
+  },
+  {
+    sector: 'Empresarios',
+    metric: 'Empleo, emprendimiento y visión',
+    proemesHeight: '92%',
+    tag: 'Desarrollo Local',
+  },
+  {
+    sector: 'Universitarios',
+    metric: 'Relevo generacional e innovación',
+    proemesHeight: '95%',
+    tag: 'Futuro Sostenible',
+  },
+];
+---
+
+<section id="quienes-somos" class="editorial-sections" aria-label="Identidad, pilares e impacto de PROEMES">
+  <article class="container editorial-stack">
+
+    <!-- BLOQUE 1: Quiénes Somos (Split Editorial Izquierda + Tarjetas de Diálogo Derecha) -->
+    <article class="split-row" aria-labelledby="who-title">
+      <header class="split-left">
+        <h2 id="who-title" class="editorial-heading">
+          Hay más necesidades en la comunidad que esfuerzos <em>aislados</em>.
+        </h2>
+        <p class="editorial-copy">
+          Cuando un profesional, un empresario y un estudiante universitario
+          trabajan por separado, su alcance es limitado. En <strong>PROEMES</strong>
+          unimos las tres fuerzas en una sola red organizada al servicio del
+          bien común.
+        </p>
+      </header>
+
+      <aside class="split-right conversation-stack" aria-label="Voces que integran PROEMES">
+        <article class="dialogue-card">
+          <header class="dialogue-meta">
+            <span class="avatar-dot avatar-dot--blue" aria-hidden="true">P</span>
+            <strong>Sector de Profesionales</strong>
+            <small>Mentoría y Servicio</small>
+          </header>
+          <p class="dialogue-body">
+            [Texto editable: Aportamos diagnóstico técnico, brigadas de
+            asistencia profesional y orientación ética para resolver problemas
+            reales de nuestra comunidad.]
+          </p>
+          <footer class="dialogue-tags">
+            <mark class="mini-tag mini-tag--amber">◆ Excelencia Ética</mark>
+            <mark class="mini-tag mini-tag--blue">◆ Asesoría Social</mark>
+          </footer>
+        </article>
+
+        <article class="dialogue-card dialogue-card--featured">
+          <header class="dialogue-meta">
+            <span class="avatar-dot avatar-dot--flame" aria-hidden="true">E</span>
+            <strong>Sector de Empresarios</strong>
+            <small>Impulso Productivo</small>
+          </header>
+          <p class="dialogue-body">
+            [Texto editable: Transformamos la visión empresarial en
+            oportunidades laborales, apoyo a nuevos emprendedores y respaldo
+            logístico para cada proyecto social.]
+          </p>
+          <footer class="dialogue-action-bar">
+            <span>Lema activo: <em>“Mi profesión al servicio de mi comunidad”</em></span>
+            <a href="https://www.facebook.com/aproemes" target="_blank" rel="noopener noreferrer" class="mini-pill-cta">
+              Ver iniciativas
+            </a>
+          </footer>
+        </article>
+
+        <article class="dialogue-card">
+          <header class="dialogue-meta">
+            <span class="avatar-dot avatar-dot--gold" aria-hidden="true">U</span>
+            <strong>Estudiantes Universitarios</strong>
+            <small>Relevo Generacional</small>
+          </header>
+          <p class="dialogue-body">
+            [Texto editable: Nos formamos junto a profesionales y empresarios
+            con experiencia, integrando innovación académica y energía joven en
+            cada jornada comunitaria.]
+          </p>
+        </article>
+      </aside>
+    </article>
+
+    <!-- BLOQUE 2: Los 3 Pilares en Tarjetas Limpias (Sin ramificaciones) -->
+    <article id="pilares" class="split-row" aria-labelledby="pillars-title">
+      <header class="split-left">
+        <h2 id="pillars-title" class="editorial-heading">
+          Tres pilares unidos por el <em>progreso comunitario</em>.
+        </h2>
+        <p class="editorial-copy">
+          Nuestra asociación articula la preparación universitaria, el ejercicio
+          profesional y el liderazgo empresarial bajo una misma identidad de
+          servicio.
+        </p>
+      </header>
+
+      <ul class="split-right pillars-cards-grid" aria-label="Los 3 pilares de PROEMES">
+        {
+          pillars.map((item) => (
+            <li>
+              <article class="pillar-clean-card">
+                <small class="pillar-clean-step">{item.step}</small>
+                <h3 class="pillar-clean-title">{item.title}</h3>
+                <p class="pillar-clean-desc">{item.description}</p>
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+
+    <!-- BLOQUE 3: Ecosistema Multidisciplinario (Mosaico de Iconos) -->
+    <article id="ecosistema" class="split-row" aria-labelledby="eco-title">
+      <header class="split-left">
+        <h2 id="eco-title" class="editorial-heading">
+          Todas las profesiones necesitan un punto de <em>encuentro</em>.
+        </h2>
+        <p class="editorial-copy">
+          Reunimos a especialistas, emprendedores y futuros graduados de todas
+          las ramas del saber para brindar respuestas integrales a nuestra
+          comunidad.
+        </p>
+      </header>
+
+      <ul class="split-right tile-matrix" aria-label="Áreas profesionales que participan en PROEMES">
+        {
+          disciplines.map((item) => (
+            <li class={`matrix-tile matrix-tile--${item.tone}`}>
+              <svg
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d={item.icon} />
+              </svg>
+              <span class="tile-label">{item.name}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+
+    <!-- BLOQUE 4: Impacto por Sector (Visualización de Columnas) -->
+    <article id="impacto" class="split-row" aria-labelledby="metrics-title">
+      <header class="split-left">
+        <h2 id="metrics-title" class="editorial-heading">
+          Excelencia en cada sector, unida por <em>un mismo lema</em>.
+        </h2>
+        <p class="editorial-copy">
+          Cada miembro multiplica su alcance al integrarse en nuestras jornadas
+          formativas, empresariales y comunitarias.
+        </p>
+        <ul class="metrics-legend">
+          <li><i class="swatch swatch--amber"></i> Crecimiento con PROEMES</li>
+          <li><i class="swatch swatch--royal"></i> Vinculación Intergeneracional</li>
+          <li><i class="swatch swatch--muted"></i> Esfuerzo Individual Aislado</li>
+        </ul>
+      </header>
+
+      <ul class="split-right chart-columns" aria-label="Comparativa de impacto de los 3 sectores">
+        {
+          comparisonBars.map((col) => (
+            <li class="chart-col">
+              <header class="chart-col__head">
+                <strong>{col.sector}</strong>
+                <small>{col.tag}</small>
+              </header>
+              <figure class="bars-stage" aria-hidden="true">
+                <span class="bar bar--proemes" style={`height: ${col.proemesHeight};`}>
+                  <em>+100%</em>
+                </span>
+                <span class="bar bar--royal" style="height: 68%;"></span>
+                <span class="bar bar--isolated" style="height: 36%;"></span>
+              </figure>
+              <p class="chart-col__caption">{col.metric}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+
+  </article>
+</section>

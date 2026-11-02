@@ -1,0 +1,149 @@
+---
+import { Image, getImage } from 'astro:assets';
+import heroImg from '../assets/images/hero.png';
+import logoImg from '../assets/images/logo.png';
+
+const optimizedHero = await getImage({
+  src: heroImg,
+  format: 'webp',
+  quality: 88,
+  width: 1920,
+});
+---
+
+<section
+  id="inicio"
+  class="cinematic-hero"
+  aria-labelledby="hero-title"
+  style={`--hero-bg-url: url('${optimizedHero.src}');`}
+>
+  <!-- Escenario fotográfico con mayor transparencia + Luz Volumétrica Animada -->
+  <figure class="hero-stage-bg" aria-hidden="true">
+    <picture class="hero-parallax-layer" id="hero-parallax-layer">
+      <Image
+        src={heroImg}
+        alt="Comunidad de profesionales, empresarios y estudiantes universitarios de PROEMES reunidos en un salón"
+        widths={[640, 1024, 1440, 1920]}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+        class="hero-photo"
+      />
+    </picture>
+  </figure>
+
+  <!-- Contenido centrado con animaciones de entrada futuristas escalonadas -->
+  <article class="container hero-centerpiece">
+    <figure class="hero-emblem-float">
+      <picture class="hero-emblem-halo">
+        <Image
+          src={logoImg}
+          alt="Escudo oficial de PROEMES con llama naranja y hexágono azul"
+          width={92}
+          height={92}
+          loading="eager"
+          fetchpriority="high"
+          class="hero-emblem-img"
+        />
+      </picture>
+      <figcaption class="hero-motto-pill">
+        “MI PROFESIÓN AL SERVICIO DE MI COMUNIDAD”
+      </figcaption>
+    </figure>
+
+    <h1 id="hero-title" class="hero-editorial-title">
+      Impulsa el talento de tu comunidad con <span class="text-gradient-gold">visión de futuro</span>.
+    </h1>
+
+    <p class="hero-editorial-sub">
+      <strong>PROEMES</strong> es la Asociación de Profesionales, Empresarios y
+      Estudiantes Universitarios donde el conocimiento académico y el liderazgo
+      productivo se unen para transformar nuestro entorno.
+    </p>
+
+    <menu class="hero-pill-actions">
+      <li>
+        <a href="#quienes-somos" class="pill-btn pill-btn--glass">
+          <span>Conocer la Asociación</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.facebook.com/aproemes"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="pill-btn pill-btn--light"
+          aria-label="Unirse a la comunidad oficial de PROEMES en Facebook (se abre en una nueva pestaña)"
+        >
+          <span>Unirse en Facebook</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
+        </a>
+      </li>
+    </menu>
+  </article>
+</section>
+
+<script>
+  // 1. Parallax suave en escritorio, desactivado en móvil y con prefers-reduced-motion
+  const layer = document.getElementById('hero-parallax-layer');
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const desktopQuery = window.matchMedia('(min-width: 769px)');
+
+  if (layer) {
+    let ticking = false;
+
+    const updateParallax = () => {
+      if (reducedMotionQuery.matches || !desktopQuery.matches) {
+        layer.style.transform = 'translate3d(0, 0, 0) scale(1)';
+        ticking = false;
+        return;
+      }
+
+      const scrollY = window.scrollY;
+      if (scrollY <= window.innerHeight * 1.4) {
+        const offset = Math.round(scrollY * 0.34);
+        layer.style.transform = `translate3d(0, ${offset}px, 0) scale(1.06)`;
+      }
+      ticking = false;
+    };
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+
+    window.addEventListener('resize', updateParallax, { passive: true });
+    reducedMotionQuery.addEventListener('change', updateParallax);
+    updateParallax();
+  }
+
+  // 2. Animaciones de entrada futuristas al hacer scroll (IntersectionObserver seguro)
+  if ('IntersectionObserver' in window && !reducedMotionQuery.matches) {
+    document.documentElement.classList.add('has-scroll-anim');
+    const animatedNodes = document.querySelectorAll(
+      '.split-row, .dialogue-card, .pillar-clean-card, .matrix-tile, .chart-col, .qa-pill, .feature-card, .luminous-window'
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    animatedNodes.forEach((node) => observer.observe(node));
+  }
+</script>
