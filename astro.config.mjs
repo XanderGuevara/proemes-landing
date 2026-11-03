@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://www.facebook.com/aproemes',
+  site: 'https://xanderguevara.github.io',
+  base: '/proemes-landing',
   compressHTML: true,
 });
