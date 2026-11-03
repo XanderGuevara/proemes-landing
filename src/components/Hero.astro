@@ -86,7 +86,7 @@ const optimizedHero = await getImage({
 </section>
 
 <script>
-  // 1. Parallax suave en escritorio, desactivado en móvil y con prefers-reduced-motion
+  // 1. Parallax fluido (escritorio + micro-parallax suave en móvil, desactivado con prefers-reduced-motion)
   const layer = document.getElementById('hero-parallax-layer');
   const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
   const desktopQuery = window.matchMedia('(min-width: 769px)');
@@ -95,7 +95,7 @@ const optimizedHero = await getImage({
     let ticking = false;
 
     const updateParallax = () => {
-      if (reducedMotionQuery.matches || !desktopQuery.matches) {
+      if (reducedMotionQuery.matches) {
         layer.style.transform = 'translate3d(0, 0, 0) scale(1)';
         ticking = false;
         return;
@@ -103,7 +103,9 @@ const optimizedHero = await getImage({
 
       const scrollY = window.scrollY;
       if (scrollY <= window.innerHeight * 1.4) {
-        const offset = Math.round(scrollY * 0.34);
+        // En móvil aplicamos un factor suave (0.16) acelerado por GPU sin saltos; en escritorio 0.34
+        const speed = desktopQuery.matches ? 0.34 : 0.16;
+        const offset = Math.round(scrollY * speed);
         layer.style.transform = `translate3d(0, ${offset}px, 0) scale(1.06)`;
       }
       ticking = false;
@@ -125,11 +127,13 @@ const optimizedHero = await getImage({
     updateParallax();
   }
 
-  // 2. Animaciones de entrada futuristas al hacer scroll (IntersectionObserver seguro)
+  // 2. Animaciones Scroll-Reveal optimizadas para Móvil y Escritorio (60fps, sin bloqueo en columnas altas)
   if ('IntersectionObserver' in window && !reducedMotionQuery.matches) {
     document.documentElement.classList.add('has-scroll-anim');
+    // Observamos cada elemento individual en vez del contenedor gigante .split-row
+    // para que en pantallas móviles se activen de inmediato al entrar en pantalla.
     const animatedNodes = document.querySelectorAll(
-      '.split-row, .dialogue-card, .pillar-clean-card, .matrix-tile, .chart-col, .qa-pill, .feature-card, .luminous-window'
+      '.split-left, .dialogue-card, .pillar-clean-card, .matrix-tile, .chart-col, .qa-header, .qa-pill, .feature-left, .feature-card, .luminous-window'
     );
 
     const observer = new IntersectionObserver(
@@ -141,7 +145,7 @@ const optimizedHero = await getImage({
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -15px 0px' }
     );
 
     animatedNodes.forEach((node) => observer.observe(node));
