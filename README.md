@@ -1,60 +1,56 @@
-# PROEMES — Landing Page Oficial (Astro)
+# PROEMES — Landing page institucional
 
-Página web de una sola página (*landing page*) moderna, geométrica, plana y futurista construida con **Astro** para **PROEMES (Asociación de Profesionales, Empresarios y Estudiantes Universitarios)**.
+Proyecto de landing page desarrollado con **Astro** para presentar a **PROEMES (Asociación de Profesionales, Empresarios y Estudiantes Universitarios)**.
 
-- **Lema institucional**: *"MI PROFESIÓN AL SERVICIO DE MI COMUNIDAD"*
-- **Fanpage oficial**: [https://www.facebook.com/aproemes](https://www.facebook.com/aproemes)
+**Lema:** «Mi profesión al servicio de mi comunidad».
 
-## Estructura del Proyecto
+**Referencia institucional:** https://www.facebook.com/aproemes
 
-```text
-proemes-landing/
-├── astro.config.mjs
-├── package.json
-├── tsconfig.json
-├── public/
-│   └── images/
-│       ├── hero.png           # Respaldo estático y OpenGraph
-│       └── logo.png           # Favicon e icono público
-└── src/
-    ├── assets/
-    │   └── images/
-    │       ├── hero.png       # Optimizada automáticamente a WebP por Astro
-    │       └── logo.png       # Optimizada con <Image /> de astro:assets
-    ├── components/
-    │   ├── Navbar.astro       # Cabecera fija con navegación accesible por teclado
-    │   ├── Hero.astro         # Hero principal con efecto Parallax, escudo y lema
-    │   ├── About.astro        # Quiénes somos, Misión/Visión y los 3 pilares
-    │   ├── Contact.astro      # Sección de contacto y enlace directo a Facebook
-    │   └── Footer.astro       # Pie de página institucional con logo y enlaces
-    ├── layouts/
-    │   └── Layout.astro       # Documento HTML5 base, metadatos SEO y skip-link
-    ├── pages/
-    │   └── index.astro        # Página principal que ensambla las secciones
-    └── styles/
-        └── global.css         # Variables CSS, paleta oficial, Grid/Flexbox y geometría
+## Objetivo
+
+Presentar de forma clara la identidad de la asociación, sus propósitos y las vías de contacto mediante un sitio de una sola página.
+
+## Secciones y estructura
+
+- **Navbar:** navegación principal.
+- **Hero:** presentación destacada de la asociación.
+- **About:** información institucional.
+- **Contact:** canales de contacto.
+- **Footer:** pie de página.
+- **Layout:** estructura HTML y metadatos comunes.
+
+La página principal, `src/pages/index.astro`, integra estos componentes. Los estilos generales se organizan en `src/styles/global.css`.
+
+## Tecnologías
+
+- Astro 5.
+- HTML semántico y CSS.
+- Componentes reutilizables de Astro.
+
+## Instalación y ejecución
+
+Requisitos: Node.js y npm compatibles con Astro.
+
+```bash
+git clone https://github.com/XanderGuevara/proemes-landing.git
+cd proemes-landing
+npm install
+npm run dev
 ```
 
-## Cómo ejecutar el proyecto localmente
+Abre la dirección local indicada en la terminal.
 
-1. **Abrir una terminal en la carpeta del proyecto**:
-   ```bash
-   cd C:\Users\david\.gemini\antigravity\scratch\proemes-landing
-   ```
+Para compilar y previsualizar:
 
-2. **Instalar las dependencias**:
-   ```bash
-   npm install
-   ```
+```bash
+npm run build
+npm run preview
+```
 
-3. **Iniciar el servidor de desarrollo**:
-   ```bash
-   npm run dev
-   ```
-   Abre `http://localhost:4321` en tu navegador.
+## Estado del proyecto
 
-4. **Compilar para producción**:
-   ```bash
-   npm run build
-   npm run preview
-   ```
+Repositorio de desarrollo y presentación institucional. Este README no presupone que el sitio esté desplegado públicamente.
+
+## Autoría y metodología
+
+Proyecto incluido en el portafolio de **David Guevara**, con uso de herramientas de inteligencia artificial como apoyo al desarrollo y a la resolución de problemas.
